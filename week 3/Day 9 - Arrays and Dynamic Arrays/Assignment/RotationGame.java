@@ -89,5 +89,25 @@ public class RotationGame {
 				System.out.print(input[i - B] + " ");
 			}
 		}
+		System.out.println("==== Rotation using reverse technique ====");
+		input = reverse(input, 0, size - 1);
+		input = reverse(input, 0, B - 1);
+		input = reverse(input, B, size - 1);
+
+		for (int i = 0; i < size; i++) {
+			System.out.print(input[i] + " ");
+		}
+
+	}
+
+	private static int[] reverse(int[] a, int s, int e) {
+		while (s < e) {
+			a[s] = a[s] ^ a[e];
+			a[e] = a[s] ^ a[e];
+			a[s] = a[s] ^ a[e];
+			s++;
+			e--;
+		}
+		return a;
 	}
 }
