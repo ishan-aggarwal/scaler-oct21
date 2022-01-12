@@ -1,17 +1,17 @@
 package day33.classwork;
 
-// Q4. MaxSumSubMatrixEV3
+// Q7. MaxSumSubMatrixEV3
 
 // Given a matrix of size (N*M).
 // For max sum of any sub-matrix that starts at row 0 to N-1 and end row can end between 0 to N-1
-public class MaxSumSubMatrix {
+public class MaxSumSubMatrixEV3 {
 
 	public static void main(String[] args) {
 		int mat[][] = { { 0, -2, -7, 0 }, { 9, 2, -6, 2 }, { -4, 1, -4, 1 }, { -1, 8, 0, -2 } };
-		System.out.print(maxSum(mat));
+		System.out.print(maxSumEV3(mat));
 	}
 
-	private static int maxSum(int[][] mat) {
+	private static int maxSumEV3(int[][] mat) {
 
 		int rows = mat.length;
 		int cols = mat[0].length;
