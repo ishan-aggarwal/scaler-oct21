@@ -33,14 +33,24 @@ package day5.assignments;
 
 public class NumberOfOneBits {
 	public static int numSetBits(int A) {
-		int countOneBits = 0;
+// 		int countOneBits = 0;
+// 		while (A != 0) {
+// 			if ((A & 1) == 1) {
+// 				countOneBits++;
+// 			}
+// 			A >>= 1;
+// 		}
+// 		return countOneBits;
+		
+		// lets say the number is 6 (110)
+		
+		int total_ones = 0;
 		while (A != 0) {
-			if ((A & 1) == 1) {
-				countOneBits++;
-			}
-			A >>= 1;
+		    A = A & (A - 1); // 6 && 5 (110) & (101) = 4 then 4 & 3 = (100) & (011) = 0 so answer is 2
+		    total_ones++;
 		}
-		return countOneBits;
+		return total_ones;
+		
 	}
 
 	public static void main(String[] args) {
