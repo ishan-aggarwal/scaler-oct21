@@ -37,11 +37,8 @@ public class MaxSumSubMatrixEV3 {
 						currentSum = 0;
 					}
 				}
-
 			}
-
 		}
-
 		return maxSum;
 	}
 }
