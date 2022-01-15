@@ -63,6 +63,8 @@ public class SingleNumber3 {
 			return null;
 		}
 
+		// since all numbers are repeated twice except two numbers
+		// so final xor will hold the xor of those two numbers
 		int xor = 0;
 		for (int i = 0; i < n; i++) {
 			xor = xor ^ A.get(i);
@@ -71,6 +73,9 @@ public class SingleNumber3 {
 		int i = 0, pos = 0;
 		int ans1 = 0, ans2 = 0;
 
+		// now since xor is non-zero, that means the set bit in xor result
+		// should be set in either of the numbers (A or B) and not both
+		// so identify the position of first such set bit
 		while (xor != 0) {
 			if ((xor & 1) == 1) {
 				pos = i;
@@ -80,6 +85,8 @@ public class SingleNumber3 {
 			xor = xor >> 1;
 		}
 
+		// finally divide the whole array into two sets of numbers
+		// one in which the bit at pos is set and other in which bit at pos is not set
 		for (i = 0; i < n; i++) {
 
 			if ((A.get(i) & (1 << pos)) != 0) {
