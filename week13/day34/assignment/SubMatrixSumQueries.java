@@ -86,15 +86,16 @@ package day34.assignment;
 
 public class SubMatrixSumQueries {
 	public static int[] solve(int[][] A, int[] B, int[] C, int[] D, int[] E) {
-		int n = A.length;
-		int m = A[0].length;
+		int rows = A.length;
+		int columns = A[0].length;
+		int modulo = 1000000007;
 
 		// initialize the ps matrix
-		int ps[][] = new int[n][m];
+		long ps[][] = new long[rows][columns];
 
 		// do row wise sum first
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < columns; j++) {
 				if (j == 0) {
 					ps[i][j] = A[i][j];
 					continue;
@@ -104,31 +105,36 @@ public class SubMatrixSumQueries {
 		}
 
 		// do column wise sum
-		for (int i = 1; i < n; i++) {
-			for (int j = 0; j < m; j++) {
+		for (int i = 1; i < rows; i++) {
+			for (int j = 0; j < columns; j++) {
 				ps[i][j] = ps[i - 1][j] + ps[i][j];
 			}
 		}
 
-		int q = B.length;
-		int[] result = new int[q];
-		for (int i = 0; i < q; i++) {
+		int queriesCount = B.length;
+		int[] result = new int[queriesCount];
+		for (int idx = 0; idx < queriesCount; idx++) {
+			int topX = B[idx] - 1, topY = C[idx] - 1, bottomX = D[idx] - 1, bottomY = E[idx] - 1;
 
-			int b = B[i] - 1, c = C[i] - 1, d = D[i] - 1, e = E[i] - 1;
+			long answer = ps[bottomX][bottomY];
+			if (topX > 0) {
+				answer = answer - ps[topX - 1][bottomY];
+			}
+			if (topY > 0) {
+				answer = answer - ps[bottomX][topY - 1];
+			}
+			if (topX > 0 && topY > 0) {
+				answer = answer + ps[topX - 1][topY - 1];
+			}
 
-			if (b > 0 && c > 0) {
-				result[i] = ps[d][e] - ps[b - 1][e] - ps[d][c - 1] + ps[b - 1][c - 1];
-			} else if (b > 0) {
-				result[i] = ps[d][e] - ps[b - 1][e];
-			} else if (c > 0) {
-				result[i] = ps[d][e] - ps[d][c - 1];
+			if ((answer % modulo) < 0) {
+				answer = (answer % modulo + modulo) % modulo;
+				result[idx] = (int) (answer % modulo);
 			} else {
-				result[i] = ps[d][e];
+				result[idx] = (int) (answer % modulo);
 			}
 		}
-
 		return result;
-
 	}
 
 	public static void main(String[] args) {

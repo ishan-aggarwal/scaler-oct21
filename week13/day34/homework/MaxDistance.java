@@ -52,48 +52,25 @@ public class MaxDistance {
 	// DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
 	public static int maximumGap(final int[] A) {
 		int n = A.length;
-		int maxGap = 0;
+		int maxGap = Integer.MIN_VALUE;
 
 		int[] leftMin = new int[n];
 		leftMin[0] = A[0];
 
 		for (int i = 1; i < n; i++) {
-			if (A[i] >= leftMin[i - 1]) {
-				leftMin[i] = leftMin[i - 1];
-			} else {
-				leftMin[i] = A[i];
-			}
+			leftMin[i] = Math.min(leftMin[i - 1], A[i]);
 		}
 
-		int[] rightMax = new int[n];
-		rightMax[n - 1] = A[n - 1];
+		int i = n - 1, j = n - 1;
 
-		for (int i = n - 2; i >= 0; i--) {
-			if (A[i] <= rightMax[i + 1]) {
-				rightMax[i] = rightMax[i + 1];
-			} else {
-				rightMax[i] = A[i];
-			}
-		}
+		while (i >= 0 && j >= 0) {
 
-		int i = 0;
-		int j = n - 1;
-		while (i < j) {
-			if (leftMin[i] <= rightMax[j]) {
+			if (A[j] >= leftMin[i]) {
 				maxGap = Math.max(maxGap, j - i);
-				break;
+				i--;
+			} else {
+				j--;
 			}
-			i++;
-		}
-
-		i = 0;
-		j = n - 1;
-		while (i < j) {
-			if (leftMin[i] <= rightMax[j]) {
-				maxGap = Math.max(maxGap, j - i);
-				break;
-			}
-			j--;
 		}
 		return maxGap;
 	}

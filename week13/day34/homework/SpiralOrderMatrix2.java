@@ -65,7 +65,6 @@ public class SpiralOrderMatrix2 {
 		int value = 1;
 
 		int top = 0, left = 0, bottom = A - 1, right = A - 1;
-
 		while (left <= right && top <= bottom) {
 
 			for (int i = left; i <= right; i++) {
@@ -87,6 +86,7 @@ public class SpiralOrderMatrix2 {
 				result[l][left] = value++;
 			}
 			left++;
+
 		}
 
 		return result;

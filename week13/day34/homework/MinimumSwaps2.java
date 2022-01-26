@@ -61,7 +61,6 @@ package day34.homework;
 
 public class MinimumSwaps2 {
 	public static int solve(int[] A) {
-
 		int n = A.length;
 		int minSwaps = 0;
 		for (int idx = 0; idx < n; idx++) {

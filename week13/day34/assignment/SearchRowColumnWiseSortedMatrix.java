@@ -59,7 +59,10 @@ public class SearchRowColumnWiseSortedMatrix {
 
 		while (i < n && j >= 0) {
 			if (A[i][j] == B) {
-				return ((i + 1) * 1009 + (j + 1));
+				while (j >= 0 && A[i][j] == B) {
+					j--;
+				}
+				return (i + 1) * 1009 + (j + 2);
 			} else if (A[i][j] > B) {
 				j--;
 			} else {
