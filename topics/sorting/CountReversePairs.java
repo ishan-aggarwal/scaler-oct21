@@ -1,7 +1,5 @@
 package day45.homework;
 
-import javax.naming.ldap.Rdn;
-
 //Q2. Reverse pairs
 
 //Problem Description
