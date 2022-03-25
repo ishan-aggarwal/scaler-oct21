@@ -60,7 +60,6 @@ import java.util.Stack;
 public class ReversingElementsOfQueue {
 	public static int[] solve(int[] A, int B) {
 		int[] res = new int[A.length];
-		Queue<Integer> queue = new LinkedList<>();
 		Stack<Integer> stack = new Stack<>();
 
 		int count = 0;

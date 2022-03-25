@@ -4,8 +4,6 @@ import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Queue;
 
-import day56.assignment.LinkedList;
-
 //Q2. N integers containing only 1, 2 & 3
 //Problem Description
 //Given an integer, A. Find and Return first positive A integers in ascending order containing only digits 1, 2, and 3.
@@ -56,6 +54,9 @@ import day56.assignment.LinkedList;
 // Output denotes the first 3 integers that contains only digits 1, 2 and 3.
 
 public class NIntegersWith123 {
+
+	// This approach is called BFS approach
+	// TC and SC - O(N)
 	public static int[] solve(int A) {
 		int[] res = new int[A];
 		int idx = 0;
@@ -72,7 +73,6 @@ public class NIntegersWith123 {
 			queue.add(head * 10 + 2);
 			queue.add(head * 10 + 3);
 		}
-
 		return res;
 	}
 
