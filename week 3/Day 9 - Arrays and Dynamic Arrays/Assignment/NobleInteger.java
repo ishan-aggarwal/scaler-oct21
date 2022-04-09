@@ -49,38 +49,15 @@ import java.util.Collections;
 public class NobleInteger {
     public int solve(ArrayList<Integer> A) {
 
-        int len = A.size();
         Collections.sort(A);
-
-        // base condition where all the elements in the array are negative and one element is zero
-        if (A.get(len - 1) == 0) {
-            return 1;
+        int size = A.size();
+        for(int i = 0; i < size; i++){
+        	while(i+1<size && A.get(i)==A.get(i+1))
+        		i++;
+        	if(A.get(i) == size-1-i)
+        		return 1;
         }
-
-        for (int i = 0; i < len - 1; i++) {
-            int currElement = A.get(i);
-            if (currElement == (len - i -1) && currElement != A.get(i + 1)) {
-                return 1;
-            }
-        }
-
-
-        // return -1;
-
-        // for (int i = 0; i < len; i++) {
-        //     int currElement = A.get(i);
-        //     int totalElementsGreaterThanCurrElement = 0;
-        //     for (int j = 0; j < len; j++) {
-        //         if (A.get(j) > currElement) {
-        //             totalElementsGreaterThanCurrElement++;
-        //         }
-        //     }
-
-        //     if (totalElementsGreaterThanCurrElement == currElement) {
-        //         return 1;
-        //     }
-        // }
-
         return -1;
+
     }
 }
