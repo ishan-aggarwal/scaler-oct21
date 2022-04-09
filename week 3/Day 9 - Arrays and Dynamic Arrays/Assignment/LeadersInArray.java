@@ -62,36 +62,26 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class LeadersInArray {
-	public static ArrayList<Integer> solve(ArrayList<Integer> A) {
 
-		ArrayList<Integer> result = new ArrayList<Integer>();
-		int size = A.size();
+    public ArrayList<Integer> solve(ArrayList<Integer> A) {
 
-		// base condition - 1
-		if (size == 0) {
-			return result;
-		}
-
-		// base condition - 2
-		if (size == 1) {
-			result.add(A.get(0));
-			return result;
-		}
-
-		// add the right most element to result array
-		result.add(A.get(size - 1));
-		int currentMax = A.get(size - 1);
-
-		for (int i = size - 2; i >= 0; i--) {
-
-			if (A.get(i) > currentMax) {
-				result.add(A.get(i));
-				currentMax = A.get(i);
-			}
-
-		}
-		return result;
-	}
+        int size = A.size();
+        int max_from_right =  A.get(size-1); 
+      
+        ArrayList<Integer> ans = new ArrayList<>();
+        /* Rightmost element is always leader */
+        ans.add(A.get(size-1));
+        
+        for (int i = size-2; i >= 0; i--) 
+        { 
+            if (max_from_right < A.get(i)) 
+            {            
+                max_from_right = A.get(i);
+                ans.add(max_from_right);
+            } 
+        }
+        return ans;
+    }
 
 	public static void main(String[] args) {
 		ArrayList<Integer> A = new ArrayList<>();
