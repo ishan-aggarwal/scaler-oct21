@@ -81,22 +81,17 @@ public class Subset {
 		}
 
 		// TC - O(2^N)
-		solve(idx + 1, cur, ans, A); // not take
-		int element = A.get(idx);
-		cur.add(element); // DO
-		solve(idx + 1, cur, ans, A); // take
-		cur.remove(cur.size() - 1); // UNDO
+//		solve(idx + 1, cur, ans, A); // not take
+//		int element = A.get(idx);
+//		cur.add(element); // DO
+//		solve(idx + 1, cur, ans, A); // take
+//		cur.remove(cur.size() - 1); // UNDO
 
 //			Another way
-//        if (idx == A.size()) {
-//        	ans.add(new ArrayList<Integer>(cur));
-//            return;
-//        }
-//
-//        cur.add(A.get(idx));
-//        solve(idx + 1, cur, ans, A); // Take
-//        cur.remove(cur.size() - 1);  // Undo last step
-//        solve(idx + 1, cur, ans, A); // Not take
+		cur.add(A.get(idx));
+		solve(idx + 1, cur, ans, A); // Take
+		cur.remove(cur.size() - 1); // Undo last step
+		solve(idx + 1, cur, ans, A); // Not take
 
 	}
 

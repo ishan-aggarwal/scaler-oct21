@@ -50,6 +50,7 @@ import java.util.Collections;
 
 public class Permutations {
 
+	// TC - O(N!) and SC - ?
 	public static ArrayList<ArrayList<Integer>> permute(ArrayList<Integer> A) {
 		ArrayList<ArrayList<Integer>> answer = new ArrayList<ArrayList<Integer>>();
 		ArrayList<Integer> current = new ArrayList<Integer>(A);

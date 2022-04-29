@@ -1,0 +1,19 @@
+Backtracking - Trying all possible combinations
+
+Q1. Print all N digit numbers using {1, 2}. N is the input. 
+		TC - O (N * 2 ^ N) because O(N) for printing and O(2^N) for every position has two choices
+		SC - O(N) - stack size + O(N) - list size
+		
+Q2. Print all N digit numbers using {1, 2, 3, 4, 5}. N is the input. 
+		TC - O (N * 5 ^ N) because O(N) for printing and O(5^N) for every position has five choices
+		SC - O(N) - stack size + O(N) - list size (check for storing the results should be considered or not)
+		
+Q3. Generate all subsets of an array {1, 2, 3}. N is the size of array. 
+		TC - O (N * 2 ^ N) because O(N) for printing and O(2^N) for every array element we have two choices either to pick it or not pick it
+		
+		
+Q4. Count all subsets of an array whose sum is equal to given target.
+		TC - O (2 ^ N) because for every array element we have two choices either to include in current sum or not
+		SC - O(N) only as no list is used 
+		
+		
