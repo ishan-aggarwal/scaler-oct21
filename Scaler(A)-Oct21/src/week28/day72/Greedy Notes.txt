@@ -1,0 +1,3 @@
+Greedy Notes
+
+https://www.interviewbit.com/courses/programming/topics/greedy-algorithm/#problems
