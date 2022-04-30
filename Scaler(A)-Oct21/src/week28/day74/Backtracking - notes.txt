@@ -1,0 +1,16 @@
+Backtracking - Trying all possible combinations
+
+Q1. Rat in a maze : Given the maze and initial loc of the mouse (x,y).
+	Return true if there exists a path from the start to the end.
+		TC - O (N*M)
+		
+Q2. Rat in a maze 2 (Google)
+	Given the maze and start point of rat (si, sj) end point of the hole (ei, ej) and below values to represent the cells
+	blocked cells - 1, Cells filled with cheese - 0, Empty cell - can have any value
+	Count the number of paths from start to end such that the rat can eat all the cheese present in the maze without stepping
+	on the same cell twice in the path.
+		TC for this solution would be - 4 ^ (N*M)
+		Because after visiting the current entire path we are making the cells reset to their previous state
+		Since we can move in four directions from every cell there are four possibilities	
+	
+Q3. N Queens Problem (Standard Question) - Google/ MS/ FB/ Paypal/ Paytm/ Flipkart
