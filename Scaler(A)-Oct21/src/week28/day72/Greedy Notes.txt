@@ -1,3 +1,61 @@
 Greedy Notes
 
 https://www.interviewbit.com/courses/programming/topics/greedy-algorithm/#problems
+
+//Q1. Fractional Knapsack Problem
+Given weights and values of n items and the flexibility that you are allowed to break items or choose fraction of the items. Your task is to put these items in a knapsack of capacity W to get the maximum total value of the items in the knapsack.
+
+Input: 
+Number of items, n = 3
+int[] weights = { 10, 20, 30 }; 
+int[] values = { 60, 100, 120 }; 
+int capacity = 50; 
+
+Output: 
+Maximum Value Attainable - 240 
+Considering items of weight 10 kg and 20 kg and 2/3 fraction of 30 kg. 
+Hence total price will be 60+100+(2/3)(120) = 240
+
+TC - O(n * log n)
+
+
+//Q2. Activity Selection (Amazon)
+
+Given n activities with their start and end  time.
+At a time only one activity can be performed
+Maximize the no. of activities that you can perform
+
+Given N activities with their start time and end time. The task is to find the solution set having a maximum number of non-conflicting activities that can be executed within the given time, assuming only a single activity can be performed at a given time.
+
+Examples:
+
+Input: start[] = [10, 12, 20}]         
+          end[] =  [20, 25, 30]
+Output: [0, 2]
+Explanation: A maximum of two activities can be performed, i.e. Activity 0 and Activity 2[0-based indexing]. 
+
+Input:  
+start[]  =  [1, 3, 0, 5, 8, 5]
+finish[] =  [2, 4, 6, 7, 9, 9]
+Output: [0, 1, 3, 4]
+Explanation: A maximum of four activities can be performed, i.e. Activity 0, Activity 1, Activity 3, and Activity 4[0-based indexing]. 
+
+https://www.interviewbit.com/blog/activity-selection-problem/
+TC - O(N*logN)
+
+Observation - Sort the activities on the basis of their end time
+
+
+//Q3. Job Scheduling Problem (Amazon, Facebook)
+Given N jobs (Deadline, rewards)
+- you need 1 day to complete one job
+- on a given day, you can do a single job
+- a job can be performed on any day on or before the day of deadline.
+
+You need to maximize the amount of reward.
+
+Observations
+1. Try to do the job on the day of deadline.
+2. Prioritize the job with the highest reward.
+
+TC - O(N * log N) + O(N * d) ---> O(N * log N) + O(N log d)

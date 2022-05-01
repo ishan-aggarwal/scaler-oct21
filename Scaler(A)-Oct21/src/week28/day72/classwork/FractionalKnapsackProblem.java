@@ -1,7 +1,6 @@
 package week28.day72.classwork;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
 //Q1. Fractional Knapsack Problem
 
@@ -44,9 +43,9 @@ public class FractionalKnapsackProblem {
 				totalValue += curValue;
 			} else {
 				// item cant be picked whole
-				double fraction = ((double) capacity / (double) curWeight);
-				totalValue += (curValue * fraction);
-				capacity = (int) (capacity - (curWeight * fraction));
+				Double fraction = i.ratio;
+				totalValue += (capacity * fraction);
+				capacity = 0;
 				break;
 			}
 		}
