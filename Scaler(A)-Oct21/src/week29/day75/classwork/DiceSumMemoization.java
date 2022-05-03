@@ -44,10 +44,12 @@ public class DiceSumMemoization {
 			return 1;
 		}
 
-		if (dp[N] == 0) {
+		int ans = 0;
+		if (dp[N] == -1) {
 			for (int i = 1; i <= 6; i++) {
-				dp[N] += findWays(N - i, dp);
+				ans += findWays(N - i, dp);
 			}
+			dp[N] = ans;
 		}
 		// Return the result
 		return dp[N];
@@ -63,7 +65,7 @@ public class DiceSumMemoization {
 
 		System.out.println("-------------");
 		int[] dp1 = new int[7];
-		Arrays.fill(dp1, 0);
+		Arrays.fill(dp1, -1);
 		System.out.println(findWays(6, dp1));
 	}
 }

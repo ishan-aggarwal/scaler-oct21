@@ -1,7 +1,5 @@
 package week29.day75.classwork;
 
-import java.util.Arrays;
-
 // Q2. Ladder Problem (Amazon, MS, Adobe, Flipkart)
 // Given N stairs. Count the number of ways of going from 
 // 0th to Nth step.
