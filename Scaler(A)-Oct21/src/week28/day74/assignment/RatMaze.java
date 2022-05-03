@@ -78,6 +78,8 @@ public class RatMaze {
 		solveMaze(A, 0, 0, A.size());
 		for (int i = 0; i < A.size(); i++) {
 			for (int j = 0; j < A.get(0).size(); j++) {
+				// change 2 to 1 for the cells where we marked visited to find the answer
+				// before printing the final result
 				if (A.get(i).get(j) == 2) {
 					A.get(i).set(j, 1);
 				}
@@ -87,37 +89,43 @@ public class RatMaze {
 	}
 
 	private boolean solveMaze(ArrayList<ArrayList<Integer>> a, int si, int sj, int size) {
+
+		// check if we reached the end then return true
 		if (si == size - 1 && sj == size - 1) {
 			return true;
 		}
 
+		// check for boundary conditions and if outside of boundary return false
 		if ((si < 0 || si >= size) || (sj < 0 || sj >= size)) {
 			return false;
 		}
 
-		// non-traversable cell or already visited cel
+		// non-traversable cell or already visited cell
 		if (a.get(si).get(sj) == 0 || a.get(si).get(sj) == 2) {
 			return false;
 		}
 
-//		int prev = a.get(si).get(sj);
-		// mark visited
+		// int prev = a.get(si).get(sj);
+		// mark current cell as visited (can set any value here)
 		a.get(si).set(sj, 2);
 
-		boolean downans = solveMaze(a, si + 1, sj, size);
-		if (!downans && (si + 1 < size && sj < size)) {
+		boolean dResult = solveMaze(a, si + 1, sj, size);
+		if (!dResult && (si + 1 < size && sj < size)) {
+			// marking the cell as 0 as it does not result in path
 			a.get(si + 1).set(sj, 0);
 		}
 
-		boolean rightans = solveMaze(a, si, sj + 1, size);
-		if (!rightans && (si < size && sj + 1 < size)) {
+		boolean rResult = solveMaze(a, si, sj + 1, size);
+		if (!rResult && (si < size && sj + 1 < size)) {
+			// marking the cell as 0 as it does not result in path
 			a.get(si).set(sj + 1, 0);
 		}
 
-		// mark non-visited
+		// mark non-visited - this step would be required when all paths are needed
+		// in the final answer
 		// a.get(si).set(sj, prev);
 
-		return downans || rightans;
+		return dResult || rResult;
 	}
 
 	public static void main(String args[]) {
