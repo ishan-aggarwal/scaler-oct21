@@ -3,7 +3,6 @@ package week28.day74.assignment;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 // https://leetcode.com/problems/n-queens/
@@ -97,7 +96,19 @@ public class NQueensProblem2 {
 		// Call recursive function for 0th row
 		solveNQueens(board, A, 0, allPossibleCombinations);
 
+//		int rowSize = allPossibleCombinations.size();
+//		int columnSize = allPossibleCombinations.get(0).size();
+//
+//		String[][] ans = new String[rowSize][columnSize];
+//
+//		for (int i = 0; i < rowSize; i++) {
+//			for (int j = 0; j < columnSize; j++) {
+//				ans[i][j] = allPossibleCombinations.get(i).get(j);
+//			}
+//		}
+
 		return allPossibleCombinations;
+//		return ans;
 	}
 
 	private void solveNQueens(char[][] board, int n, int row, ArrayList<ArrayList<String>> allPossibleCombinations) {
