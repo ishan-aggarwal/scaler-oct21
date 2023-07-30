@@ -89,7 +89,5 @@ public class RainWaterTrapped {
     public static void main(String[] args) {
         int[] A = {0, 1, 0, 2};
         System.out.println(trap(A));
-
-        Integer i = new Integer("9");
     }
 }

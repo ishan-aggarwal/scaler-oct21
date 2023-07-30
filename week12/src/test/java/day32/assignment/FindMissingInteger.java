@@ -64,44 +64,81 @@ package day32.assignment;
 //First positive integer missing from the array is 3.
 
 public class FindMissingInteger {
-	public static int firstMissingPositive(int[] A) {
+    public static int firstMissingPositive(int[] A) {
 
-		int n = A.length;
+        int n = A.length;
 
-		// make all the negative and zero elements as (n+1)
-		// if the total size is n and there are elements with value (n+1) in it as well,
-		// then that means we will have something missing
-		// between the range 1 to N itself
-		for (int i = 0; i < n; i++) {
-			if (A[i] <= 0) {
-				A[i] = n + 1;
-			}
-		}
+        // make all the negative and zero elements as (n+1)
+        // if the total size is n and there are elements with value (n+1) in it as well,
+        // then that means we will have something missing
+        // between the range 1 to N itself
+        for (int i = 0; i < n; i++) {
+            if (A[i] <= 0) {
+                A[i] = n + 1;
+            }
+        }
 
-		// if the element value at ith index is in the range of 1.N
-		// then turn the corresponding index element as negative
-		for (int i = 0; i < n; i++) {
-			if (Math.abs(A[i]) <= n) {
-				A[Math.abs(A[i]) - 1] = -1 * Math.abs(A[Math.abs(A[i]) - 1]);
-			}
-		}
+        // if the element value at ith index is in the range of 1.N
+        // then turn the corresponding index element as negative
+        for (int i = 0; i < n; i++) {
+            if (Math.abs(A[i]) <= n) {
+                A[Math.abs(A[i]) - 1] = -1 * Math.abs(A[Math.abs(A[i]) - 1]);
+            }
+        }
 
-		// return the first index position which is still positive
-		// otherwise return (n+1)
-		for (int i = 0; i < n; i++) {
-			if (A[i] > 0) {
-				return (i + 1);
-			}
-		}
+        // return the first index position which is still positive
+        // otherwise return (n+1)
+        for (int i = 0; i < n; i++) {
+            if (A[i] > 0) {
+                return (i + 1);
+            }
+        }
 
-		return (n + 1);
-	}
+        return (n + 1);
+    }
 
-	public static void main(String[] args) {
-		int[] A = { 1, 2, 0 };
-		System.out.println(firstMissingPositive(A));
+    public static int firstMissingPositive1(int[] arr) {
 
-		int[] B = { -8, -7, -6 };
-		System.out.println(firstMissingPositive(B));
-	}
+        int n = arr.length;
+
+
+        boolean isOnePresent = false;
+
+        // Check if 1 is present in array or not
+        for (int i = 0; i < n; i++) {
+            if (arr[i] == 1) {
+                isOnePresent = true;
+                break;
+            }
+        }
+
+        // If 1 is not present
+        if (!isOnePresent)
+            return 1;
+
+        // Changing values to 1
+        for (int i = 0; i < n; i++)
+            if (arr[i] <= 0 || arr[i] > n)
+                arr[i] = 1;
+
+        // Updating indices according to values
+        for (int i = 0; i < n; i++)
+            arr[(arr[i] - 1) % n] += n;
+
+        // Finding which index has value less than n
+        for (int i = 0; i < n; i++)
+            if (arr[i] <= n)
+                return (i + 1);
+
+        // If array has values from 1 to n
+        return (n + 1);
+    }
+
+    public static void main(String[] args) {
+        int[] A = {1, 2, 0};
+        System.out.println(firstMissingPositive(A));
+
+        int[] B = {-8, -7, -6};
+        System.out.println(firstMissingPositive1(B));
+    }
 }
