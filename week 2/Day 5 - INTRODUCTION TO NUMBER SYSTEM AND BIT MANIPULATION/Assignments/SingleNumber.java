@@ -49,7 +49,7 @@
 //
 //1 occurs once.
 
-package day5.assignments;
+package day5.Assignments;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -66,8 +66,7 @@ public class SingleNumber {
 	}
 
 	public static void main(String[] args) {
-		ArrayList<Integer> A = new ArrayList<>();
-		A.addAll(Arrays.asList(1, 2, 2, 3, 1));
+		ArrayList<Integer> A = new ArrayList<>(Arrays.asList(1, 2, 2, 3, 1));
 		System.out.println(singleNumber(A));
 	}
 }

@@ -1,4 +1,4 @@
-package day32.classwork;
+package day32.classroom;
 
 //Q3. Max Sum Contiguous Subarray
 
@@ -56,7 +56,7 @@ package day32.classwork;
 //
 // The subarray [4,-1,2,1] has the maximum possible sum of 6. 
 
-public class MaxSumContiguousSubarrayWithLargestLength {
+public class MaxSumContiguousSubarrayWithSmallestLength {
 	public static int[] maxSubArray(final int[] A) {
 
 		// note answer is initialized with Integer minimum
@@ -67,7 +67,7 @@ public class MaxSumContiguousSubarrayWithLargestLength {
 
 		int startPos = 0;
 		int endPos = 0;
-		int largestLength = Integer.MIN_VALUE;
+		int smallestLength = Integer.MAX_VALUE;
 
 		// iterate over the array
 		for (int start = 0, end = 0; end < A.length; end++) {
@@ -76,11 +76,11 @@ public class MaxSumContiguousSubarrayWithLargestLength {
 
 			// update answer if current sum is greater than answer
 			// and set the values for startPos and endPos
-			if (currentSum > answer || (currentSum == answer && (end - start + 1) > largestLength)) {
+			if (currentSum > answer || (currentSum == answer && (end - start + 1) < smallestLength)) {
 				answer = currentSum;
 				startPos = start;
 				endPos = end;
-				largestLength = end - start + 1;
+				smallestLength = end - start + 1;
 			}
 			// reset the current sum to zero if it is negative and adjust the start pointer
 			// also to position end + 1
